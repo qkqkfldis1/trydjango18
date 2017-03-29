@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+    <div class='row'>
+        <div class='col-sm-6 col-sm-offset-3'>
+            <h1>Edit</h1>
+            <form method="post" action=".">
+                {% csrf_token %}
+                {{ user_form | crispy }}
+                {{ profile_form | crispy }}
+
+                <input class='btn btn-block btn-primary' type="submit" value="{% trans 'Submit' %}" />
+                <input type="hidden" name="next" value="{{ next }}" />
+            </form>
+        </div>
+
+    </div>
+    <hr/>
+    <div class='row'>
+        <div class='col-sm-6 col-sm-offset-3 text-align-center'>
+            <p><a href="{% url 'home' %}">Go Home</a>!</p>
+        </div>
+    </div>
+
+{% endblock %}

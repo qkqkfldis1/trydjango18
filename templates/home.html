@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+{% block head_title %}Welcome | {{ block.super }}{% endblock %}
+
+<style>
+    {% block style %}
+        .jumbotron {
+            background-color: #0E3D14;
+            color: white;
+        }
+        #white {
+            color: white;
+        }
+
+    {% endblock %}
+</style>
+
+<!-- Main component for a primary marketing message or call to action -->
+{% block jumbotron%}
+    <div class="jumbotron">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-6">
+
+                    <h1>Try Virtual Conference!!</h1>
+                    <p class="lead">This conference is to give an opportunity to scientists in all fields. Within our site, you can advertise your research using videos!!</p>
+                    <p class="lead">First, sign up! and upload your research!</p>
+                    <p>
+                        <a class="btn btn-lg btn-primary" href="{% url "registration_register" %}" role="button">Join Us! &raquo;</a>
+                    </p>
+                </div>
+                <div class="col-sm-6">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/x6myDjjATs4" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{#{% block jumbotron %}#}
+{#    {{ block.super }}#}
+{#{% endblock %}#}
+
+{% block content %}
+    <div class="row">
+{##}
+{#        <div class="col-sm-3 pull-right">#}
+{#            <p class="lead">{{ title.title }}</p>#}
+{##}
+{#            <form action=".", method="POST">{% csrf_token %}#}
+{#                {{ form | crispy }}#}
+{#                <input class="btn btn-primary btn-lg" type="submit" value="Sign Up">#}
+{#            </form>#}
+{#        </div>#}
+        <div class="col-sm-4">
+            <p class="lead text-align-center">Built with Django & Bootstrap <br> <br><br> <img src="{% static 'img/logoKAIST.gif' %}" alt="" style="height: 90px;"></p>
+        </div>
+        <div class="col-sm-4">
+            <p class="lead text-align-center">Get your creative idea in our site!! <br>
+                <span class="fa-stack fa-lg fa-5x">
+                    <i class="fa fa-comment-o fa-stack-2x"></i>
+                    <i class="fa fa-bolt fa-stack-1x"></i>
+                </span>
+            </p>
+        </div>
+        <div class="col-sm-4">
+            <p class="lead text-align-center">It's my first page! <br><br>
+                <span class="fa-stack fa-lg fa-5x">
+                    <i class="fa fa-circle-o-notch fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x"></i>
+                </span>
+            </p>
+
+
+            </span>
+
+        </div>
+    </div>
+
+{% endblock %}
+

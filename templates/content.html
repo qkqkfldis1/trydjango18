@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+{% block head_title %}Welcome | {{ block.super }}{% endblock %}
+
+<style>
+    {% block style %}
+        .jumbotron {
+            background-color: #0E3D14;
+            color: white;
+        }
+        #white {
+            color: white;
+        }
+
+    {% endblock %}
+</style>
+
+<!-- Main component for a primary marketing message or call to action -->
+
+{#{% block jumbotron %}#}
+{#    {{ block.super }}#}
+{#{% endblock %}#}
+
+{% block content %}
+    <div class="row">
+        {##}
+        {#        <div class="col-sm-3 pull-right">#}
+        {#            <p class="lead">{{ title.title }}</p>#}
+        {##}
+        {#            <form action=".", method="POST">{% csrf_token %}#}
+        {#                {{ form | crispy }}#}
+        {#                <input class="btn btn-primary btn-lg" type="submit" value="Sign Up">#}
+        {#            </form>#}
+        {#        </div>#}
+        <div class="col-sm-6">
+            <p class="lead text-align-center"><a href="{% url 'lectures:create' %}">Create your lecture!!</a></p>
+        </div>
+{#        <div class="col-sm-4">#}
+{#            <p class="lead text-align-center"><a href="{% url 'lectures:update ' %}">Edit your lecture!!</a><br>#}
+{#            </p>#}
+{#        </div>#}
+        <div class="col-sm-6">
+            <p class="lead text-align-center"><a href="{% url 'lectures:list' %}">See other lecture!</a>
+            </p>
+
+
+            </span>
+
+        </div>
+    </div>
+
+{% endblock %}
+

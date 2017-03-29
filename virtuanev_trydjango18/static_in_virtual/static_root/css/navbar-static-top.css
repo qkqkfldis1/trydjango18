@@ -1,0 +1,12 @@
+body {
+  min-height: 2000px;
+}
+
+.navbar-static-top {
+  margin-bottom: 0px !important;
+  background-color: transparent;
+}
+
+.text-align-center {
+  text-align: center;
+}
