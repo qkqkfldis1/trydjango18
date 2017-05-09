@@ -13,7 +13,6 @@
         #white {
             color: white;
         }
-
     {% endblock %}
 </style>
 
@@ -45,50 +44,68 @@
 {#{% endblock %}#}
 
 {% block content %}
-    <div class="row">
-        {##}
-        {#        <div class="col-sm-3 pull-right">#}
-        {#            <p class="lead">{{ title.title }}</p>#}
-        {##}
-        {#            <form action=".", method="POST">{% csrf_token %}#}
-        {#                {{ form | crispy }}#}
-        {#                <input class="btn btn-primary btn-lg" type="submit" value="Sign Up">#}
-        {#            </form>#}
-        {#        </div>#}
-        <div class="col-sm-3">
-            <p class="lead text-align-center">Built with Django & Bootstrap <br> <br><br> <img src="{% static 'img/logoKAIST.gif' %}" alt="" style="height: 90px;"></p>
-        </div>
-        <div class="col-sm-3">
-            <p class="lead text-align-center">Get your creative idea in our site!! <br>
-                <span class="fa-stack fa-lg fa-5x">
+    {% if request.user.is_authenticated %}
+        <h1>You're logged in!</h1>
+        {% if queryset %}
+            <h2>Welcome Staff</h2>
+            <table class="table">
+                {% for instance in queryset %}
+                    <tr>
+                        <td >{{ forloop.counter }}</td>
+                        <td>{{ instance }} </td>
+                        <td>{{ instance.full_name }}</td>
+                        <td>{{ instance.timestamp|timesince }} ago</td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+        {% endif %}
+    {% else %}
+
+        <div class="row">
+            {##}
+            {#        <div class="col-sm-3 pull-right">#}
+            {#            <p class="lead">{{ title.title }}</p>#}
+            {##}
+            {#            <form action=".", method="POST">{% csrf_token %}#}
+            {#                {{ form | crispy }}#}
+            {#                <input class="btn btn-primary btn-lg" type="submit" value="Sign Up">#}
+            {#            </form>#}
+            {#        </div>#}
+            <div class="col-sm-3">
+                <p class="lead text-align-center">Built with Django & Bootstrap <br> <br><br> <img src="{% static 'img/logoKAIST.gif' %}" alt="" style="height: 90px;"></p>
+            </div>
+            <div class="col-sm-3">
+                <p class="lead text-align-center">Get your creative idea in our site!! <br>
+                    <span class="fa-stack fa-lg fa-5x">
                     <i class="fa fa-comment-o fa-stack-2x"></i>
                     <i class="fa fa-bolt fa-stack-1x"></i>
                 </span>
-            </p>
-        </div>
-        <div class="col-sm-3">
-            <p class="lead text-align-center">It's my first page! <br><br>
-                <span class="fa-stack fa-lg fa-5x">
+                </p>
+            </div>
+            <div class="col-sm-3">
+                <p class="lead text-align-center">It's my first page! <br><br>
+                    <span class="fa-stack fa-lg fa-5x">
                     <i class="fa fa-circle-o-notch fa-stack-2x"></i>
                     <i class="fa fa-github fa-stack-1x"></i>
                 </span>
-            </p>
+                </p>
 
 
-            </span>
+                </span>
 
+            </div>
+            <div class="col-sm-3">
+                <h1>{{ title }}</h1>
+                <form method="post" action=".">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+
+                    <input class='btn btn-primary' type="submit" value="Sign Up" />
+{#                    <input type="hidden" name="next" value="{{ next }}" />#}
+                </form>
+            </div>
         </div>
-        <div class="col-sm-3">
-            <h1>{{ title }}</h1>
-            <form method="post" action=".">
-                {% csrf_token %}
-                {{ form | crispy }}
-
-{#                <input class='btn btn-block btn-primary' type="submit" value="{% trans 'Submit' %}" />#}
-                <input type="hidden" name="next" value="{{ next }}" />
-            </form>
-        </div>
-    </div>
-
+    {% endif %}
 {% endblock %}
 
